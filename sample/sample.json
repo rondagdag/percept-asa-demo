@@ -1,0 +1,55 @@
+[{
+    "body": {
+      "NEURAL_NETWORK": [
+        {
+          "bbox": [
+            0.32,
+            0,
+            0.592,
+            0.834
+          ],
+          "label": "person",
+          "confidence": "0.970703",
+          "timestamp": "1633275502757261752"
+        }
+      ]
+    },
+    "enqueuedTime": "2021-10-03T15:38:24.365Z"
+ },
+ { 
+    "body": {
+      "NEURAL_NETWORK": [
+        {
+          "bbox": [
+            0.343,
+            0.002,
+            0.593,
+            0.847
+          ],
+          "label": "person",
+          "confidence": "0.980957",
+          "timestamp": "1633275501674003741"
+        }
+      ]
+    },
+    "enqueuedTime": "2021-10-03T15:38:23.272Z"
+ },
+ {
+    "body": {
+      "NEURAL_NETWORK": [
+        {
+          "bbox": [
+            0.343,
+            0.003,
+            0.593,
+            0.851
+          ],
+          "label": "person",
+          "confidence": "0.980469",
+          "timestamp": "1633275500590758084"
+        }
+      ]
+    },
+    "enqueuedTime": "2021-10-03T15:38:22.162Z"
+  }
+]

@@ -1,0 +1,14 @@
+{
+    "name": "asa-edge-percept-demo",
+    "startFile": "Transformation.asaql",
+    "configurations": [
+        {
+            "filePath": "Inputs/iotinput.json",
+            "subType": "Input"
+        },
+        {
+            "filePath": "JobConfig.json",
+            "subType": "JobConfig"
+        }
+    ]
+}

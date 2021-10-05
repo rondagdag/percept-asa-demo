@@ -1,0 +1,17 @@
+WITH ReaderQuery AS (
+  SELECT
+  CAST(Data.arrayvalue.label AS NVARCHAR(MAX)) as Label,
+  CAST(Data.arrayvalue.timestamp as BIGINT) as UNIXtimestamp
+
+FROM
+  iotinput
+  Cross apply GetArrayElements(NEURAL_NETWORK) as Data
+WHERE
+    CAST(Data.arrayvalue.confidence as Float) > 0.6
+)
+SELECT
+    Label,
+    Count(*)
+INTO alert
+FROM ReaderQuery
+GROUP BY Label, TumblingWindow(second, 15)
