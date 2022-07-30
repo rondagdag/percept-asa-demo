@@ -1,0 +1,17 @@
+{
+    "EnqueuedTimeUtc": "2022-07-30T03:40:30.3900000Z",
+    "Properties": {},
+    "SystemProperties": {
+        "connectionDeviceId": "percept-device-01",
+        "connectionModuleId": "asa-edge-percept-demo",
+        "connectionAuthMethod": "{\"scope\":\"module\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
+        "connectionDeviceGenerationId": "637688825906513031",
+        "contentType": "application/json",
+        "contentEncoding": "utf-8",
+        "enqueuedTime": "2022-07-30T03:40:30.3900000Z"
+    },
+    "body": {
+        "Label": "speak",
+        "Count": 14
+    }
+}

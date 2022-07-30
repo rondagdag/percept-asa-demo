@@ -4,12 +4,6 @@
             "properties.desired": {
                 "modules": {
                     "WebStreamModule": {
-                        "settings": {
-                            "image": "mcr.microsoft.com/azureedgedevices/webstreammodule:preload-devkit",
-                            "createOptions": "{\"ExposedPorts\":{\"2999/tcp\":{},\"3000/tcp\":{},\"3002/tcp\":{},\"3004/tcp\":{},\"3006/tcp\":{},\"3008/tcp\":{},\"3010/tcp\":{}},\"HostConfig\":{\"PortBindings\":{\"2999/tcp\":[{\"HostPort\":\"2999\"}],\"3000/tcp\":[{\"HostPort\":\"3000\"}],\"3002/tcp\":[{\"HostPort\":\"3002\"}],\"3004/tcp\":[{\"HostPort\":\"3004\"}],\"3006/tcp\":[{\"HostPort\":\"3006\"}],\"3008/tcp\":[{\"HostPort\":\"3008\"}],\"3010/tcp\":[{\"HostPort\":\"3010\"}]}}}"
-                        },
-                        "type": "docker",
-                        "version": "1.0",
                         "env": {
                             "RTSP_IP": {
                                 "value": "azureeyemodule"
@@ -21,36 +15,36 @@
                                 "value": "result"
                             }
                         },
+                        "restartPolicy": "always",
+                        "settings": {
+                            "image": "mcr.microsoft.com/azureedgedevices/webstreammodule:2203",
+                            "createOptions": "{\"ExposedPorts\":{\"2999/tcp\":{},\"3000/tcp\":{},\"3002/tcp\":{},\"3004/tcp\":{},\"3006/tcp\":{},\"3008/tcp\":{},\"3010/tcp\":{}},\"HostConfig\":{\"PortBindings\":{\"2999/tcp\":[{\"HostPort\":\"2999\"}],\"3000/tcp\":[{\"HostPort\":\"3000\"}],\"3002/tcp\":[{\"HostPort\":\"3002\"}],\"3004/tcp\":[{\"HostPort\":\"3004\"}],\"3006/tcp\":[{\"HostPort\":\"3006\"}],\"3008/tcp\":[{\"HostPort\":\"3008\"}],\"3010/tcp\":[{\"HostPort\":\"3010\"}]}}}"
+                        },
                         "status": "running",
-                        "restartPolicy": "always"
+                        "type": "docker",
+                        "version": "1.0"
                     },
                     "devmmclientmodule": {
+                        "restartPolicy": "always",
                         "settings": {
                             "image": "mcr.microsoft.com/azureedgedevices/devmmclientmodule:preload-devkit",
                             "createOptions": "{\"HostConfig\":{\"Privileged\":true,\"Binds\":[\"/dev:/dev\"]}}"
                         },
-                        "type": "docker",
-                        "version": "1.0",
                         "status": "running",
-                        "restartPolicy": "always"
+                        "type": "docker",
+                        "version": "1.0"
                     },
                     "azureearspeechclientmodule": {
+                        "restartPolicy": "always",
                         "settings": {
                             "image": "mcr.microsoft.com/azureedgedevices/azureearspeechclientmodule:preload-devkit",
                             "createOptions": "{\"HostConfig\":{\"Binds\":[\"/dev/bus/usb:/dev/bus/usb\",\"/dev/snd:/dev/snd\"],\"DeviceCgroupRules\":[\"c 189:* rmw\",\"c 116:* rmw\"]}}"
                         },
-                        "type": "docker",
-                        "version": "1.0.0",
                         "status": "running",
-                        "restartPolicy": "always"
+                        "type": "docker",
+                        "version": "1.0.0"
                     },
                     "azureeyemodule": {
-                        "settings": {
-                            "image": "mcr.microsoft.com/azureedgedevices/azureeyemodule:2108-1",
-                            "createOptions": "{\"ExposedPorts\":{\"8554/tcp\":{}},\"HostConfig\":{\"Binds\":[\"/dev/bus/usb:/dev/bus/usb\"],\"DeviceCgroupRules\":[\"c 189:* rmw\"],\"PortBindings\":{\"8554/tcp\":[{\"HostPort\":\"8554\"}]}}}"
-                        },
-                        "type": "docker",
-                        "version": "1.0",
                         "env": {
                             "AZURE_CLIENT_ID": {
                                 "value": ""
@@ -65,16 +59,16 @@
                                 "value": ""
                             }
                         },
+                        "restartPolicy": "always",
+                        "settings": {
+                            "image": "mcr.microsoft.com/azureedgedevices/azureeyemodule:2112-1",
+                            "createOptions": "{\"ExposedPorts\":{\"8554/tcp\":{}},\"HostConfig\":{\"Binds\":[\"/dev/bus/usb:/dev/bus/usb\"],\"DeviceCgroupRules\":[\"c 189:* rmw\"],\"PortBindings\":{\"8554/tcp\":[{\"HostPort\":\"8554\"}]}}}"
+                        },
                         "status": "running",
-                        "restartPolicy": "always"
+                        "type": "docker",
+                        "version": "1.0"
                     },
                     "ImageCapturingModule": {
-                        "settings": {
-                            "image": "mcr.microsoft.com/azureedgedevices/imagecapturingmodule:latest-arm64v8",
-                            "createOptions": "{}"
-                        },
-                        "type": "docker",
-                        "version": "0.0.3",
                         "env": {
                             "RTSP_IP": {
                                 "value": "azureeyemodule"
@@ -86,64 +80,48 @@
                                 "value": "raw"
                             }
                         },
-                        "status": "running",
-                        "restartPolicy": "always"
-                    },
-                    "NodeREDonIoTEdge": {
+                        "restartPolicy": "always",
                         "settings": {
-                            "image": "marketplace.azurecr.io/1604376875527/wedx-nodered",
-                            "createOptions": "{\"HostConfig\":{\"Binds\":[\"node_red_data:/data\"],\"PortBindings\":{\"1880/tcp\":[{\"HostPort\":\"1880\"}]},\"Privileged\":true}}"
-                        },
-                        "type": "docker",
-                        "version": "1.0",
-                        "env": {
-                            "TZ": {
-                                "value": "Asia/Tokyo"
-                            },
-                            "NODE_RED_CREDENTIAL_SECRET": {
-                                "value": "nodered"
-                            },
-                            "NODE_RED_ENABLE_PROJECTS": {
-                                "value": "true"
-                            }
+                            "image": "mcr.microsoft.com/azureedgedevices/imagecapturingmodule:latest-arm64v8",
+                            "createOptions": "{}"
                         },
                         "status": "running",
-                        "restartPolicy": "always"
+                        "type": "docker",
+                        "version": "0.0.3"
                     },
                     "HostIpModule": {
+                        "restartPolicy": "always",
                         "settings": {
                             "image": "mcr.microsoft.com/azureedgedevices/hostipmodule:latest-arm64v8",
                             "createOptions": "{\"NetworkingConfig\":{\"EndpointsConfig\":{\"host\":{}}},\"HostConfig\":{\"NetworkMode\":\"host\"}}"
                         },
-                        "type": "docker",
-                        "version": "0.0.1",
                         "status": "running",
-                        "restartPolicy": "always"
+                        "type": "docker",
+                        "version": "0.0.1"
                     },
                     "ArduinoModule": {
+                        "restartPolicy": "always",
                         "settings": {
                             "image": "rondagdag/arduino-percept-module:0.0.6-arm64v8",
                             "createOptions": "{\"HostConfig\":{\"Privileged\":true,\"Devices\":[{\"PathOnHost\":\"/dev/ttyACM0\",\"PathInContainer\":\"/dev/ttyACM0\",\"CgroupPermissions\":\"rwm\"},{\"PathOnHost\":\"/dev/ttyACM1\",\"PathInContainer\":\"/dev/ttyACM1\",\"CgroupPermissions\":\"rwm\"}]}}"
                         },
-                        "type": "docker",
-                        "version": "1.0",
                         "status": "running",
-                        "restartPolicy": "always"
+                        "type": "docker",
+                        "version": "1.0"
                     },
                     "asa-edge-percept-demo": {
-                        "settings": {
-                            "image": "mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.8",
-                            "createOptions": ""
-                        },
-                        "type": "docker",
-                        "version": "1.0.0.0",
                         "env": {
                             "PlanId": {
                                 "value": "stream-analytics-on-iot-edge"
                             }
                         },
+                        "restartPolicy": "always",
+                        "settings": {
+                            "image": "mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.8"
+                        },
                         "status": "running",
-                        "restartPolicy": "always"
+                        "type": "docker",
+                        "version": "1.0.0.0"
                     }
                 },
                 "runtime": {
@@ -155,23 +133,18 @@
                 "schemaVersion": "1.0",
                 "systemModules": {
                     "edgeAgent": {
-                        "settings": {
-                            "image": "mcr.microsoft.com/azureiotedge-agent:1.2",
-                            "createOptions": "{}"
-                        },
-                        "type": "docker",
                         "env": {
                             "BackupConfigFilePath": {
                                 "value": "/tmp/edgeAgent/backup.json"
                             }
-                        }
+                        },
+                        "settings": {
+                            "image": "mcr.microsoft.com/azureiotedge-agent:1.2",
+                            "createOptions": "{}"
+                        },
+                        "type": "docker"
                     },
                     "edgeHub": {
-                        "settings": {
-                            "image": "mcr.microsoft.com/azureiotedge-hub:1.2",
-                            "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
-                        },
-                        "type": "docker",
                         "env": {
                             "OptimizeForPerformance": {
                                 "value": "False"
@@ -183,8 +156,13 @@
                                 "value": "tls1.2"
                             }
                         },
+                        "restartPolicy": "always",
+                        "settings": {
+                            "image": "mcr.microsoft.com/azureiotedge-hub:1.2",
+                            "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
+                        },
                         "status": "running",
-                        "restartPolicy": "always"
+                        "type": "docker"
                     }
                 }
             }
@@ -194,8 +172,6 @@
                 "routes": {
                     "AzureSpeechToIoTHub": "FROM /messages/modules/azureearspeechclientmodule/outputs/* INTO $upstream",
                     "AzureEyeModuleToArduinoModule": "FROM /messages/modules/azureeyemodule/outputs/* INTO BrokeredEndpoint(\"/modules/ArduinoModule/inputs/input1\")",
-                    "AzureEyeModuleToNodeRed": "FROM /messages/modules/azureeyemodule/outputs/* INTO BrokeredEndpoint(\"/modules/NodeREDonIoTEdge/inputs/input1\")",
-                    "ArduinoModuleToIoTHub": "FROM /messages/modules/ArduinoModule/outputs/* INTO BrokeredEndpoint(\"/modules/NodeREDonIoTEdge/inputs/buzz\")",
                     "AzureEyeModuleToASA": "FROM /messages/modules/azureeyemodule/outputs/* INTO BrokeredEndpoint(\"/modules/asa-edge-percept-demo/inputs/iotinput\")",
                     "ASAToIoTHub": "FROM /messages/modules/asa-edge-percept-demo/outputs/* INTO $upstream"
                 },
@@ -231,17 +207,14 @@
         "azureeyemodule": {
             "properties.desired": {
                 "Logging": true,
-                "ModelZipUrl": "https://aedsamples.blob.core.windows.net/vision/aeddevkitnew/person-detection-retail-0013.zip",
+                "ModelZipUrl": "https://irisscuprodstore.blob.core.windows.net:443/m-7f95808e11c94e8d84fa0e7a9ea83717/fb8b7e46230a437ba7d0524f388a77ed.OpenVino.NoPostProcess.zip?sv=2019-12-12&se=2022-07-31T03%3A15%3A50Z&sr=b&sp=r&sig=zgRYN%2Fs3EoOqwoGkxxAz97YJf9T6Hs2JIDKqUMB4TFs%3D",
                 "RawStream": true,
                 "ResultStream": true,
                 "Running": true,
-                "TelemetryInterval": 500
+                "TelemetryInterval": 15000
             }
         },
         "ImageCapturingModule": {
-            "properties.desired": {}
-        },
-        "NodeREDonIoTEdge": {
             "properties.desired": {}
         },
         "HostIpModule": {
@@ -252,7 +225,7 @@
         },
         "asa-edge-percept-demo": {
             "properties.desired": {
-                "ASAJobInfo": "https://storperceptdemo.blob.core.windows.net/asa-edge-e0a3160b-404a-4f7b-8303-5389f20cf0ac/ASAEdgeJobs/e0a3160b-404a-4f7b-8303-5389f20cf0ac/14a1f055-064a-4933-9c9d-d38af79fc06a/ASAEdgeJobDefinition.zip?sv=2018-03-28&sr=b&sig=hz74tKfttbtCdgNPYFatXqIiCYmCW31dyNzNLEldBG8%3D&st=2021-10-03T18%3A19%3A26Z&se=2024-10-03T18%3A29%3A26Z&sp=r",
+                "ASAJobInfo": "https://storperceptdemo.blob.core.windows.net/asa-edge-e0a3160b-404a-4f7b-8303-5389f20cf0ac/ASAEdgeJobs/e0a3160b-404a-4f7b-8303-5389f20cf0ac/3d300f4d-0049-4021-91cb-e97c4585a9f2/ASAEdgeJobDefinition.zip?sv=2018-03-28&sr=b&sig=AIiR%2FXhbtQ2OVjK4S0X2k9NvSHiCVk32BzdognGuzqc%3D&st=2021-10-03T19%3A26%3A57Z&se=2024-10-03T19%3A36%3A57Z&sp=r",
                 "ASAJobResourceId": "/subscriptions/8a943a54-0eb6-4379-b766-3c5e997ddc14/resourceGroups/azure-percept-demo/providers/Microsoft.StreamAnalytics/streamingjobs/asa-edge-percept-demo",
                 "ASAJobEtag": "6e1e9b18-fd80-4250-bd1b-7dfb99e6d7b3",
                 "PublishTimestamp": "10/3/2021 6:29:26 PM"
